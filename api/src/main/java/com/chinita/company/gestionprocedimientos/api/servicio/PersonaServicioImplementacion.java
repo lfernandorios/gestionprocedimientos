@@ -1,6 +1,6 @@
-package com.chinita.company.gestionprocedimientos.api.Servicio;
+package com.chinita.company.gestionprocedimientos.api.servicio;
 
-import com.chinita.company.gestionprocedimientos.api.Repository.PersonaRepository;
+import com.chinita.company.gestionprocedimientos.api.repository.PersonaRepository;
 import org.springframework.stereotype.Service;
 
 @Service

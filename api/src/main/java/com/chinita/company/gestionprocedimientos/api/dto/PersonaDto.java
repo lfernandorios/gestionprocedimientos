@@ -1,39 +1,34 @@
-package com.chinita.company.gestionprocedimientos.api.Modelo;
+package com.chinita.company.gestionprocedimientos.api.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Entity
-@Table (name="Persona")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Persona {
+@Builder
+public class PersonaDto {
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
     private long rowId;
-    @NotNull
-    @Column
-    private String tipoDocumento;
-    @NotNull
-    @Column
-    private String documento;
-    @NotNull
-    @Column
-    private String nombre;
-    @NotNull
-    @Column
-    private String apellidos;
-    @NotNull
-    @Column
-    private String sexo;
-    @NotNull
-    @Column
-    private Date fechaNacimiento;
 
+    @NotNull
+    private String tipoDocumento;
+
+    @NotNull
+    private String documento;
+
+    @NotNull
+    private String nombre;
+
+    @NotNull
+    private String apellidos;
+
+    @NotNull
+    private String sexo;
+
+    @NotNull
+    private Date fechaNacimiento;
 }

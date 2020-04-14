@@ -1,6 +1,6 @@
-package com.chinita.company.gestionprocedimientos.api.Repository;
+package com.chinita.company.gestionprocedimientos.api.repository;
 
-import com.chinita.company.gestionprocedimientos.api.Modelo.Persona;
+import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

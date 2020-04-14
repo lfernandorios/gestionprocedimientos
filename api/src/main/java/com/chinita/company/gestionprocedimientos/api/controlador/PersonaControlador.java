@@ -1,7 +1,7 @@
-package com.chinita.company.gestionprocedimientos.api.Controlador;
+package com.chinita.company.gestionprocedimientos.api.controlador;
 
 
-import com.chinita.company.gestionprocedimientos.api.Servicio.PersonaServicio;
+import com.chinita.company.gestionprocedimientos.api.servicio.PersonaServicio;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
