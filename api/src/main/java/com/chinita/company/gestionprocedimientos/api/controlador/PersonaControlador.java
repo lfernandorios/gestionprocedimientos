@@ -1,15 +1,15 @@
 package com.chinita.company.gestionprocedimientos.api.controlador;
 
-
+import com.chinita.company.gestionprocedimientos.api.dto.PersonaDto;
 import com.chinita.company.gestionprocedimientos.api.servicio.PersonaServicio;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
 
 @RestController
-@RequestMapping ("/personas")
+@RequestMapping ("/api/v1/personas")
 public class PersonaControlador {
 
     private PersonaServicio personaServicio;
@@ -19,13 +19,13 @@ public class PersonaControlador {
     }
 
     @GetMapping
-    public ResponseEntity<List<Persona>> getPersonas(){
-        return ResponseEntity.ok(personaServicio.getPersonas());
+    public ResponseEntity<List<PersonaDto>> consultarTodas(){
+        return ResponseEntity.ok(personaServicio.consultarTodas());
     }
 
     @PostMapping
-    public ResponseEntity<Persona> addPersona(@RequestBody Persona persona){
-        return ResponseEntity.ok(personaServicio.addPersona(persona));
-        
+    public ResponseEntity<PersonaDto> crear(@RequestBody PersonaDto personaDto){
+        PersonaDto personaCreada = personaServicio.crear(personaDto);
+        return new ResponseEntity<PersonaDto>(personaCreada, null, HttpStatus.CREATED);
     }
 }

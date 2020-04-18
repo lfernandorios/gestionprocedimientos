@@ -1,11 +1,12 @@
 package com.chinita.company.gestionprocedimientos.api.servicio;
 
-import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
+import com.chinita.company.gestionprocedimientos.api.dto.PersonaDto;
+
 import java.util.List;
 
 public interface PersonaServicio {
 
-    List<Persona> getPersonas();
-    Persona addPersona(Persona persona);
+    List<PersonaDto> consultarTodas();
+    PersonaDto crear(PersonaDto personaDto);
 
 }
