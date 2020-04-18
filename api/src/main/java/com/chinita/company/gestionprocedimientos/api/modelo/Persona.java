@@ -10,7 +10,9 @@ import java.util.Date;
 @Table (name="Persona")
 @Getter
 @Setter
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Persona {
 
     @Id
