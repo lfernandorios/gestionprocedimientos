@@ -3,10 +3,8 @@ package com.chinita.company.gestionprocedimientos.api.controlador;
 
 import com.chinita.company.gestionprocedimientos.api.servicio.PersonaServicio;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
 
@@ -25,8 +23,9 @@ public class PersonaControlador {
         return ResponseEntity.ok(personaServicio.getPersonas());
     }
 
-    @PostMapping ("")
-    public ResponseEntity<Persona> addPersona(Persona persona){
+    @PostMapping
+    public ResponseEntity<Persona> addPersona(@RequestBody Persona persona){
         return ResponseEntity.ok(personaServicio.addPersona(persona));
+        
     }
 }
