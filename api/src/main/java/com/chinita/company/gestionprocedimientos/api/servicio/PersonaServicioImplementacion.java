@@ -4,6 +4,8 @@ import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
 import com.chinita.company.gestionprocedimientos.api.repository.PersonaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonaServicioImplementacion implements PersonaServicio{
 
