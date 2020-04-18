@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PersonaServicio {
 
-    public List<Persona> getPersonas();
-    public Persona addPersona(Persona persona);
+    List<Persona> getPersonas();
+    Persona addPersona(Persona persona);
 
 }

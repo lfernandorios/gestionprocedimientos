@@ -1,5 +1,6 @@
 package com.chinita.company.gestionprocedimientos.api.servicio;
 
+import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
 import com.chinita.company.gestionprocedimientos.api.repository.PersonaRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,6 @@ public class PersonaServicioImplementacion implements PersonaServicio{
 
     @Override
     public Persona addPersona(Persona persona){
-        return personaRepository.save(hero);
+        return personaRepository.save(persona);
     }
 }
