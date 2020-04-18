@@ -11,4 +11,14 @@ public class PersonaServicioImplementacion implements PersonaServicio{
     public PersonaServicioImplementacion(PersonaRepository personaRepository) {
         this.personaRepository = personaRepository;
     }
+
+    @Override
+    public List<Persona> getPersonas() {
+        return personaRepository.findAll();
+    }
+
+    @Override
+    public Persona addPersona(Persona persona){
+        return personaRepository.save(hero);
+    }
 }
