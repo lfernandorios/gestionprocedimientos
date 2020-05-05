@@ -2,7 +2,6 @@ package com.chinita.company.gestionprocedimientos.api.servicio;
 
 import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
 import org.springframework.data.domain.Page;
-
 import javax.validation.constraints.NotNull;
 import org.springframework.data.domain.Pageable;
 

@@ -51,10 +51,14 @@ public class PersonaServicioImpl implements PersonaServicio{
 
         Persona personaEnBaseDato = buscarPorId(id);
 
-        Persona personaAActualizar = personaEnBaseDato.builder().tipoDocumento(personaAActualizarCmd.getTipoDocumento()).
-                documento(personaAActualizarCmd.getDocumento()).nombre(personaAActualizarCmd.getNombre()).
-                apellidos(personaAActualizarCmd.getApellidos()).sexo(personaAActualizarCmd.getSexo()).
-                fechaNacimiento(personaAActualizarCmd.getFechaNacimiento()).build();
+        personaEnBaseDato.setTipoDocumento(personaAActualizarCmd.getTipoDocumento());
+        personaEnBaseDato.setDocumento(personaAActualizarCmd.getDocumento());
+        personaEnBaseDato.setNombre(personaAActualizarCmd.getNombre());
+        personaEnBaseDato.setApellidos(personaAActualizarCmd.getApellidos());
+        personaEnBaseDato.setSexo(personaAActualizarCmd.getSexo());
+        personaEnBaseDato.setFechaNacimiento(personaAActualizarCmd.getFechaNacimiento());
+
+        Persona personaAActualizar = personaEnBaseDato;
 
         Persona personaActualizada = personaGateway.actualizar(personaAActualizar);
 

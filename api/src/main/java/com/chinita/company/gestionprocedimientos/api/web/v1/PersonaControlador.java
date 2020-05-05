@@ -60,7 +60,7 @@ public class PersonaControlador {
 
     @GetMapping
     public ResponsePagination<PersonaListaResponse> buscarTodos(@PageableDefault(page = 0, size = 10,
-                                                                         direction = Sort.Direction.DESC, sort = "id")
+                                                                         direction = Sort.Direction.DESC, sort = "rowId")
                                                            Pageable pageable) {
 
         Page<Persona> personasEcontradas = personaServicio.buscarTodos(pageable);

@@ -78,7 +78,7 @@ public class PersonaGuardarRequest {
     }
 
     public static PersonaGuardarCmd toModel(PersonaGuardarRequest personaACrear) {
-        return PersonaGuardarCmd.builder().tipoDocumento(personaACrear.getTipoDocumento()).documeto(personaACrear.getDocumento())
+        return PersonaGuardarCmd.builder().tipoDocumento(personaACrear.getTipoDocumento()).documento(personaACrear.getDocumento())
                 .nombre(personaACrear.getNombre()).apellidos(personaACrear.getApellidos()).
                         sexo(personaACrear.getSexo()).fechaNacimiento(personaACrear.getFechaNacimiento()).build();
     }

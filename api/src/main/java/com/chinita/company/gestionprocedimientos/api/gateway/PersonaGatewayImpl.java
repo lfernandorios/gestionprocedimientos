@@ -6,9 +6,11 @@ import com.chinita.company.gestionprocedimientos.api.servicio.PersonaGateway;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.stereotype.Repository;
 
 import javax.validation.constraints.NotNull;
 
+@Repository
 public class PersonaGatewayImpl implements PersonaGateway {
 
     private static final String RESOURCE_NOT_FOUND = "Personas no encontrada";
