@@ -1,58 +1,33 @@
-package com.chinita.company.gestionprocedimientos.api.modelo;
+package com.chinita.company.gestionprocedimientos.api.web.v1.modelo;
 
+import com.chinita.company.gestionprocedimientos.api.servicio.modelo.PersonaGuardarCmd;
 import lombok.*;
-
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Entity
-@Table (name="Persona")
 @Data
-@Getter
-@Setter
-@Generated
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder (toBuilder = true)
-public class Persona implements Serializable {
-
-    @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private long rowId;
+@AllArgsConstructor
+@Builder
+public class PersonaGuardarRequest {
 
     @NotNull
-    @Column
     private String tipoDocumento;
 
     @NotNull
-    @Column
     private String documento;
 
     @NotNull
-    @Column
     private String nombre;
 
     @NotNull
-    @Column
     private String apellidos;
 
     @NotNull
-    @Column
     private String sexo;
 
     @NotNull
-    @Column
-    private LocalDateTime fechaNacimiento;
-
-    public long getRowId() {
-        return rowId;
-    }
-
-    public void setRowId(long rowId) {
-        this.rowId = rowId;
-    }
+    private LocalDateTime fechaNacimiento;;
 
     public String getTipoDocumento() {
         return tipoDocumento;
@@ -101,4 +76,11 @@ public class Persona implements Serializable {
     public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public static PersonaGuardarCmd toModel(PersonaGuardarRequest personaACrear) {
+        return PersonaGuardarCmd.builder().tipoDocumento(personaACrear.getTipoDocumento()).documeto(personaACrear.getDocumento())
+                .nombre(personaACrear.getNombre()).apellidos(personaACrear.getApellidos()).
+                        sexo(personaACrear.getSexo()).fechaNacimiento(personaACrear.getFechaNacimiento()).build();
+    }
+
 }

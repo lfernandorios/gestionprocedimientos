@@ -1,60 +1,63 @@
 package com.chinita.company.gestionprocedimientos.api.servicio;
 
-import com.chinita.company.gestionprocedimientos.api.dto.PersonaDto;
 import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
-import com.chinita.company.gestionprocedimientos.api.repository.PersonaRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.chinita.company.gestionprocedimientos.api.servicio.modelo.PersonaGuardarCmd;
 import org.springframework.stereotype.Service;
-import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.transaction.annotation.Transactional;
+import javax.validation.constraints.NotNull;
+import org.springframework.data.domain.Pageable;
 
 @Service
+@Transactional
 public class PersonaServicioImpl implements PersonaServicio{
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PersonaServicioImpl.class);
+    private PersonaGateway personaGateway;
 
-    private ModelMapper modelMapper;
+    public PersonaServicioImpl(PersonaGateway personaGateway) {
+        this.personaGateway = personaGateway;
+    }
 
-    private PersonaRepository personaRepository;
 
-    public PersonaServicioImpl(PersonaRepository personaRepository, ModelMapper modelMapper) {
-        this.personaRepository = personaRepository;
-        this.modelMapper = modelMapper;
+    @Override
+    public Persona crear(@NotNull PersonaGuardarCmd personaACrearCmd) {
+        Persona personaAcrear = PersonaGuardarCmd.toModel(personaACrearCmd);
+        Persona personaCreada = personaGateway.crear(personaAcrear);
+        return personaCreada;
     }
 
     @Override
-    public List<PersonaDto> consultarTodas() {
-        List<Persona> listaPersonas = (List<Persona>) personaRepository.findAll();
-        return listaPersonas.stream()
-                .map(persona -> modelMapper.map(persona, PersonaDto.class))
-                .collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public Persona buscarPorId(@NotNull Long id) {
+        Persona personaEncontrada = personaGateway.buscarPorId(id);
+        return personaEncontrada;
     }
 
     @Override
-    public PersonaDto crear(PersonaDto personaACrearDto){
-        LOGGER.debug("Comienza a crear: personaACrearDto={}", personaACrearDto);
+    @Transactional(readOnly = true)
+    public Page<Persona> buscarTodos(@NotNull Pageable pageable) {
+        Page<Persona> personasEncontradas = personaGateway.buscarTodos(pageable);
+        return personasEncontradas;
+    }
 
-        Persona personaACrear = new Persona();
-        personaACrear.setTipoDocumento(personaACrearDto.getTipoDocumento());
-        personaACrear.setDocumento(personaACrearDto.getDocumento());
-        personaACrear.setNombre(personaACrearDto.getNombre());
-        personaACrear.setApellidos(personaACrearDto.getApellidos());
-        personaACrear.setSexo(personaACrearDto.getSexo());
-        personaACrear.setFechaNacimiento(personaACrearDto.getFechaNacimiento());
+    @Override
+    public void eliminar(@NotNull Long id) {
+        personaGateway.eliminar(id);
+    }
 
-        Persona personaCreada = personaRepository.save(personaACrear);
-        PersonaDto personaCreadaDto = new PersonaDto();
-        personaCreadaDto.setRowId(personaCreada.getRowId());
-        personaCreadaDto.setTipoDocumento(personaCreada.getTipoDocumento());
-        personaCreadaDto.setDocumento(personaCreada.getDocumento());
-        personaCreadaDto.setNombre(personaCreada.getNombre());
-        personaCreadaDto.setApellidos(personaCreada.getApellidos());
-        personaCreadaDto.setSexo(personaCreada.getSexo());
-        personaCreadaDto.setFechaNacimiento(personaCreada.getFechaNacimiento());
+    @Override
+    public Persona actualizar(@NotNull Long id, @NotNull PersonaGuardarCmd personaAActualizarCmd) {
 
-        return personaCreadaDto;
+        Persona personaEnBaseDato = buscarPorId(id);
+
+        Persona personaAActualizar = personaEnBaseDato.builder().tipoDocumento(personaAActualizarCmd.getTipoDocumento()).
+                documento(personaAActualizarCmd.getDocumento()).nombre(personaAActualizarCmd.getNombre()).
+                apellidos(personaAActualizarCmd.getApellidos()).sexo(personaAActualizarCmd.getSexo()).
+                fechaNacimiento(personaAActualizarCmd.getFechaNacimiento()).build();
+
+        Persona personaActualizada = personaGateway.actualizar(personaAActualizar);
+
+        return personaActualizada;
     }
 }
