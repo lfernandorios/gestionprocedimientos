@@ -3,9 +3,9 @@ package com.chinita.company.gestionprocedimientos.api.web.v1.modelo;
 import com.chinita.company.gestionprocedimientos.api.modelo.Persona;
 import lombok.*;
 import java.time.LocalDateTime;
-@Setter
-@Getter
+
 @Data
+@Generated
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

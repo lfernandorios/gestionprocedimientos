@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table (name="Persona")
 @Data
-@Getter
-@Setter
 @Generated
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,7 +43,7 @@ public class Persona implements Serializable {
     @NotNull
     @Column
     private LocalDateTime fechaNacimiento;
-
+/*
     public long getRowId() {
         return rowId;
     }
@@ -100,5 +98,5 @@ public class Persona implements Serializable {
 
     public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
+    }*/
 }
