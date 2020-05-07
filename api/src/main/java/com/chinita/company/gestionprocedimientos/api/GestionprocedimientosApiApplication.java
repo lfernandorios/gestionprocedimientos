@@ -12,9 +12,4 @@ public class GestionprocedimientosApiApplication {
         SpringApplication.run(GestionprocedimientosApiApplication.class, args);
     }
 
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
-
 }
