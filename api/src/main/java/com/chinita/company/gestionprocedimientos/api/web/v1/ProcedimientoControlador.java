@@ -57,7 +57,7 @@ public class ProcedimientoControlador {
     }
 
     @GetMapping
-    public ResponsePagination <ProcedimientoListaResponse> buscarTodos(@PageableDefault(page = 0, size = 10,
+    public ResponsePagination<ProcedimientoListaResponse> buscarTodos(@PageableDefault(page = 0, size = 10,
             direction = Sort.Direction.DESC, sort = "id")
                                                                          Pageable pageable) {
 
